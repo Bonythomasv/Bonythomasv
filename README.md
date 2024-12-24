@@ -1,16 +1,32 @@
-## Hi there 👋
+# 👨‍💻 About Me
 
-<!--
-**Bonythomasv/Bonythomasv** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+**Software Developer** with **13+ years of experience** in **Java/J2EE**, **microservices**, and **cloud-based solutions**.
 
-Here are some ideas to get you started:
+---
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### 🚀 Key Skills and Expertise
+- **Proficient in:**  
+  - Building scalable **Spring Boot** applications.  
+  - Integrating cloud services from **AWS** and **Azure** using **Azure Kubernetes Service (AKS)**.  
+
+- **Expertise in Push Notification Platforms:**  
+  - **APNS**, **FCM**, **Twilio**, and **Gotify**.
+
+- **API Design and Orchestration:**  
+  - Designing APIs and orchestrations using **MuleSoft**.  
+  - Modernizing legacy systems.
+
+- **Database and DevOps Expertise:**  
+  - Strong skills in databases like **Oracle**, **Cassandra**, and **Postgres**.  
+  - Proficient with DevOps tools like **Kubernetes** and **Jenkins**.
+
+---
+
+### 🎓 Certifications
+- **Oracle Certified Java Programmer (OCJP)**  
+- Actively exploring advancements in **AI** and **blockchain technologies**.
+
+---
+
+Feel free to connect with me or explore my repositories to see my work! 😊
+
