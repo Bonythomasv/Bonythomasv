@@ -1,6 +1,6 @@
 # 👨‍💻 About Me
 
-**Software Developer** with **13+ years of experience** in **Java/J2EE**, **microservices**, and **cloud-based solutions**.
+**Senior Software Developer** skilled in **microservices**, **cloud-native** solutions on **AWS**, **Azure**, **GCP**, and **OpenStack**, and emerging technologies like **AI** and **Blockchain** for **scalable**, **high-performance** applications.
 
 ---
 
