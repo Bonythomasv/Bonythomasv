@@ -109,3 +109,6 @@ Fri 18:00 PT  email: 3 topics ──► pick + edit + approve ──► queue �
 - Approved posts are **queued and published at the next Tue/Fri slot**, not right after
   approval (2026-10-20). The slot time defaults to 09:00 PT; change `PUBLISH_HOUR` to adjust.
 - GitHub access to `bonythomas.ca` was fixed on 2026-10-20.
+- Eden **still ships at `bonythomas.ca/eden`** (2026-10-20). Tailscale Serve is only for reaching
+  local dev services (e.g. `wrangler dev` previews) from Bony's phone. It's tailnet-only, never
+  Funnel, and not part of production or the release gates.
