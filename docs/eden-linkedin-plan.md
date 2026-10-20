@@ -33,6 +33,16 @@ versioned private snapshot ──► Cloudflare R2 (private)
 Verified on 2026-10-20 (reported from the Mac): `npm test` passes 5/5, and `npm run eden:check`
 finds no corpus in `dist/`. Not verified yet: any live `/eden` deployment or real WorkOS login.
 
+### What's on GitHub today (`main` @ `d9b53ed`)
+
+- The site is **assets-only**: `wrangler.jsonc` serves `./dist` on `bonythomas.ca` and
+  `www.bonythomas.ca` with no `main` script. Adding `/eden` means adding `"main": "worker/index.js"`
+  and an `ASSETS` binding, with `"run_worker_first": ["/eden*"]` so the Worker gates every
+  `/eden` request (including its assets) while the portfolio stays static.
+- **The committed `.gitignore` only excludes wrangler and env files.** It has no rule for
+  snapshots or BonyOS content. Before the first `/eden` push, add explicit ignores for the
+  snapshot output and any corpus path, and make `eden:check` fail CI if one slips through.
+
 ## Phase 1: Eden live (now)
 
 1. **Unblock the build.** Validation fails on two links to missing Codex memory summaries.
