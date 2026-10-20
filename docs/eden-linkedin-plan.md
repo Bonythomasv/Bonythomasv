@@ -72,26 +72,40 @@ finds no corpus in `dist/`. Not verified yet: any live `/eden` deployment or rea
 - Member tokens last about 60 days and usually come without a refresh token. Plan for an expiry
   check that sends a reminder about 7 days out, plus a one-click re-auth link.
 
-## Phase 3: Tuesday and Friday topic suggestions
+## Phase 3: Tuesday and Friday rhythm
 
-- Worker Cron Trigger, Tue and Fri around 18:00 America/Vancouver. Cron runs in UTC, so schedule
-  both offsets or check the local hour inside the job to cover DST.
-- Input: notes added or changed since the last run, plus series plans
-  (e.g. `Express/Eden-Real-World-AI-Series.md`). Exclude anything the Phase 1 allow-list excludes.
-- Output: 3 topics, each with a hook line, the angle, and the source note. Delivered by Slack DM
-  (or email).
-- Bony replies with 1, 2 or 3 → Claude drafts → Bony edits or approves → publish. **No post goes
-  out without an explicit approval.** Keep a log of suggestions, choices and published URLs so
-  topics aren't repeated.
+Two crons, one queue. Choosing happens in the evening; publishing happens at the next slot.
+
+```
+Tue 18:00 PT  email: 3 topics ──► pick + edit + approve ──► queue ──► Fri 09:00 PT publish
+Fri 18:00 PT  email: 3 topics ──► pick + edit + approve ──► queue ──► Tue 09:00 PT publish
+```
+
+- **Suggest (Tue + Fri, 18:00 America/Vancouver).** Read the notes added or changed since the last
+  run, plus series plans (e.g. `Express/Eden-Real-World-AI-Series.md`). Skip anything the Phase 1
+  allow-list excludes. Generate 3 topics, each with a hook line, the angle, and the source note.
+- **Email** them to Bony. Each topic links to `/eden/linkedin/<run>/<n>`, behind the same WorkOS
+  gate. The links carry no secret, and a reply email can't approve anything, so a forged or
+  forwarded message can never publish. Sending: Cloudflare's `send_email` Worker binding to
+  Bony's verified address (no third-party mail service), with Resend as the fallback.
+- **Approve page.** Pick a topic → Claude drafts the post → edit inline → *Approve*. The post goes
+  into the queue (KV/D1) with status `approved` and the next slot time.
+- **Publish (Tue + Fri, 09:00 PT).** Post the oldest approved item through the LinkedIn Posts API
+  and record its URL. If nothing is approved, skip (never auto-generate). If the LinkedIn token is
+  expired, email a re-auth link and keep the post queued.
+- Cron runs in UTC: schedule both PDT and PST offsets and check the local hour in the job, so DST
+  never double-fires or skips a slot.
+- Keep a log of runs, picks and published URLs so topics don't repeat. **Nothing reaches LinkedIn
+  without an explicit approval.**
 
 ## Out of scope
 
 - "AI Clocks In at a Coffee Shop" series: the Harvest payroll automation is *proposed*, not built.
   Track it separately.
 
-## Open decisions
+## Decisions
 
-1. Delivery channel for suggestions: Slack DM or email?
-2. Publish timing: right after approval, or a scheduled slot (for example, the next morning)?
-3. GitHub access: `Bonythomasv/bonythomas.ca` is not reachable from Claude cloud sessions yet.
-   Connect GitHub / install the Claude GitHub App on it so cloud sessions can work on the code.
+- Suggestions arrive by **email** (2026-10-20).
+- Approved posts are **queued and published at the next Tue/Fri slot**, not right after
+  approval (2026-10-20). The slot time defaults to 09:00 PT; change `PUBLISH_HOUR` to adjust.
+- GitHub access to `bonythomas.ca` was fixed on 2026-10-20.
