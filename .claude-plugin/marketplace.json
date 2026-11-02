@@ -1,0 +1,11 @@
+{
+  "name": "bonythomasv",
+  "owner": { "name": "Bony Thomas" },
+  "plugins": [
+    {
+      "name": "deeper",
+      "source": "./mods/deeper",
+      "description": "Expert-depth mode: asks what a top professional would do, from which raw material, with which tools, and what outside proof shows it's right, then rewrites your prompt to ask for exactly that."
+    }
+  ]
+}

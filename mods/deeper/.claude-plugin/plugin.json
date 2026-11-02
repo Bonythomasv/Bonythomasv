@@ -1,0 +1,23 @@
+{
+  "name": "deeper",
+  "version": "0.1.0",
+  "description": "Expert-depth mode: before acting, ask what a top professional would do, from what raw material, with which tools, and what outside proof shows it's right; then rewrite the prompt to ask for exactly that.",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "after": {
+      "type": "string",
+      "title": "After the rewrite",
+      "description": "pause: show the deepened prompt and wait for your go. run: carry it out straight away.",
+      "options": [
+        "pause",
+        "run"
+      ],
+      "default": "pause"
+    }
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Bony Thomas",
+    "email": "bonythomasv@gmail.com"
+  }
+}
