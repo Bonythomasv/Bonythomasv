@@ -1,6 +1,6 @@
 # Bony Thomas
 
-**Senior software engineer · LeagueOS co-founder · builder of practical business software**
+**AI builder & software developer · LeagueOS co-founder · turning real-world friction into useful products**
 
 I work on enterprise applications, APIs, integrations, and cloud systems. Outside my professional role, I build products and help businesses turn everyday operational problems into useful software.
 
